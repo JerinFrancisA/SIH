@@ -105,7 +105,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         HomePage.routeName: (context) => HomePage(),
-        ProjectCompletionEstimatorPage
+        ProjectCompletionEstimatorPage.routeName: (context) =>
+            ProjectCompletionEstimatorPage(),
       },
     );
   }
