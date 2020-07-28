@@ -1,4 +1,5 @@
 import 'package:SIH/screens/home_page.dart';
+import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
 import 'package:SIH/screens/sitewise_inventory_page.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             headline6: GoogleFonts.quicksand(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 15,
               fontWeight: FontWeight.w500,
               letterSpacing: 0.15,
             ),
@@ -106,6 +107,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         HomePage.routeName: (context) => HomePage(),
+        ProjectCompletionEstimator.routeName: (context) =>
+            ProjectCompletionEstimator(),
         ProjectDetailsPage.routeName: (context) => ProjectDetailsPage(),
         SitewiseInventoryPage.routeName: (context) => SitewiseInventoryPage(),
       },

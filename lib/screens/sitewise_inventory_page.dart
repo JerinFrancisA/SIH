@@ -20,7 +20,7 @@ class _SitewiseInventoryPageState extends State<SitewiseInventoryPage> {
             onPressed: () {},
           ),
           title: Text(
-            'GharSuraksha',
+            'Sitewise Inventory',
           ),
           actions: <Widget>[
             IconButton(

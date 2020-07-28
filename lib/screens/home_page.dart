@@ -1,4 +1,5 @@
 import 'package:SIH/custom_widgets/menu_item.dart';
+import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
 import 'package:SIH/screens/sitewise_inventory_page.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,10 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, ProjectCompletionEstimator.routeName);
+                          },
                           icon: Icons.face,
                           text: 'Project Completion Estimator',
                         ),

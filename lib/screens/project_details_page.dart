@@ -22,7 +22,7 @@ class _ProjectDetailsPageState extends State<ProjectDetailsPage> {
             onPressed: () {},
           ),
           title: Text(
-            'GharSuraksha',
+            'Project Details',
           ),
           actions: <Widget>[
             IconButton(
