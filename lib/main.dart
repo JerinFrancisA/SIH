@@ -1,5 +1,6 @@
 import 'package:SIH/screens/home_page.dart';
-import 'package:SIH/screens/project_complete_estimator_page.dart';
+import 'package:SIH/screens/project_details_page.dart';
+import 'package:SIH/screens/sitewise_inventory_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:SIH/utilities/constants.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GharSuraksha',
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         textTheme: TextTheme(
           headline1: GoogleFonts.quicksand(
             fontSize: 96,
@@ -105,8 +106,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         HomePage.routeName: (context) => HomePage(),
-        ProjectCompletionEstimatorPage.routeName: (context) =>
-            ProjectCompletionEstimatorPage(),
+        ProjectDetailsPage.routeName: (context) => ProjectDetailsPage(),
+        SitewiseInventoryPage.routeName: (context) => SitewiseInventoryPage(),
       },
     );
   }

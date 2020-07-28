@@ -1,4 +1,6 @@
 import 'package:SIH/custom_widgets/menu_item.dart';
+import 'package:SIH/screens/project_details_page.dart';
+import 'package:SIH/screens/sitewise_inventory_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +52,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ProjectDetailsPage.routeName,
+                            );
+                          },
                           icon: Icons.face,
                           text: 'Project Details',
                         ),
@@ -71,7 +78,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              SitewiseInventoryPage.routeName,
+                            );
+                          },
                           icon: Icons.face,
                           text: 'Sitewise Inventory',
                         ),
