@@ -50,7 +50,6 @@ class _SitewiseInventoryPageState extends State<SitewiseInventoryPage> {
                   itemBuilder: (_, int index) {
                     final DocumentSnapshot document =
                         snapshot.data.documents[index];
-                    print(document.data);
                     return ListTile(
                       title: ProjectBox(document: document),
                       subtitle:
@@ -77,10 +76,6 @@ class ProjectBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var keys = document.data.keys.toList();
-    var values = document.data.keys.toList();
-    print(document.data.length);
-
     return Container(
       decoration: BoxDecoration(
         color: kButtonColor,
@@ -101,8 +96,24 @@ class ProjectBox extends StatelessWidget {
               color: Colors.black,
             ),
             SizedBox(height: 10.0),
-            Column(
-              children: getChildren(document: document),
+            FutureBuilder(
+              future: getChildren(document: document),
+              initialData: <Widget>[
+                Center(
+                  child: Text('Awaiting Data..'),
+                ),
+              ],
+              builder: (context, snapshot) {
+                switch (snapshot.hasData) {
+                  case true:
+                    return Column(
+                      children: snapshot.data,
+                    );
+                  case false:
+                    return CircularProgressIndicator();
+                }
+                return CircularProgressIndicator();
+              },
             ),
             SizedBox(height: 10.0),
           ],
@@ -111,14 +122,28 @@ class ProjectBox extends StatelessWidget {
     );
   }
 
-  List<Widget> getChildren({var document}) {
+  Future<List<Widget>> getChildren({var document}) async {
     return List.generate(
       document.data.length,
-      (index) => Text(
-        document.data[index].toString() +
-            ': ' +
-            document.data[index].toString(),
+      (index) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0),
+            child: Text(
+              document.data.keys.toList()[index].toString(),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 18.0),
+            child: Text(
+              document.data.values.toList()[index].toString(),
+            ),
+          ),
+        ],
       ),
-    );
+    )
+      ..insert(0, Text('ITEM  :  QTY'))
+      ..insert(1, SizedBox(height: 18.0));
   }
 }
