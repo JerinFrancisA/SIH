@@ -1,4 +1,5 @@
 import 'package:SIH/screens/attendance.dart';
+import 'package:SIH/screens/biometric.dart';
 import 'package:SIH/screens/home_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
