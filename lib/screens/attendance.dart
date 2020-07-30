@@ -1,75 +1,68 @@
-import 'package:SIH/utilities/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:SIH/utilities/constants.dart';
 
-class SitewiseInventoryPage extends StatefulWidget {
-  static const routeName = "SitewiseInventoryPage";
-
+class Attendance extends StatefulWidget {
+  static const routeName = 'attendance';
   @override
-  _SitewiseInventoryPageState createState() => _SitewiseInventoryPageState();
+  _AttendanceState createState() => _AttendanceState();
 }
 
-class _SitewiseInventoryPageState extends State<SitewiseInventoryPage> {
+class _AttendanceState extends State<Attendance> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.menu),
+        child: Scaffold(
+      appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+        title: Text('Attendance List'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
             onPressed: () {},
           ),
-          title: Text(
-            'Sitewise Inventory',
+          IconButton(
+            icon: Icon(Icons.format_list_bulleted),
+            onPressed: () {},
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.format_list_bulleted),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: Center(
-          child: Container(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: Firestore.instance.collection("inventory").snapshots(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData)
-                  return CircularProgressIndicator(
-                    semanticsValue: 'Loading...',
-                    semanticsLabel: 'Awaiting Data',
-                  );
-                final int messageCount = snapshot.data.documents.length;
-                return ListView.builder(
-                  itemCount: messageCount,
-                  itemBuilder: (_, int index) {
-                    final DocumentSnapshot document =
-                        snapshot.data.documents[index];
-                    return ListTile(
-                      title: ProjectBox(document: document),
-                      subtitle: Text(
-                        'Project Site ${index + 1} of $messageCount',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    );
-                  },
+        ],
+      ),
+      body: Center(
+        child: Container(
+          child: StreamBuilder<QuerySnapshot>(
+            stream: Firestore.instance.collection("workers").snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData)
+                return CircularProgressIndicator(
+                  semanticsValue: 'Loading...',
+                  semanticsLabel: 'Awaiting Data',
                 );
-              },
-            ),
+              final int count = snapshot.data.documents.length;
+              return ListView.builder(
+                itemCount: count,
+                itemBuilder: (_, int index) {
+                  final DocumentSnapshot document =
+                      snapshot.data.documents[index];
+                  return ListTile(
+                    title: AttendanceBox(document: document),
+                    subtitle: Text(
+                      'Project Site ${index + 1} of $count',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ),
       ),
-    );
+    ));
   }
 }
 
-class ProjectBox extends StatelessWidget {
-  const ProjectBox({
+class AttendanceBox extends StatelessWidget {
+  const AttendanceBox({
     Key key,
     @required this.document,
   }) : super(key: key);
@@ -136,16 +129,20 @@ class ProjectBox extends StatelessWidget {
               document.data.keys.toList()[index].toString(),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 18.0),
-            child: Text(
-              document.data.values.toList()[index].toString(),
-            ),
+          // Padding(
+          //   padding: const EdgeInsets.only(right: 18.0),
+          //   child: Text(
+          //     document.data.values.toList()[index].toString(),
+          //   ),
+          // ),
+
+          SizedBox(
+            height: 40.0,
           ),
         ],
       ),
     )
-      ..insert(0, Text('ITEM  :  QTY'))
+      ..insert(0, Text('PERSON  :  STATUS'))
       ..insert(1, SizedBox(height: 18.0));
   }
 }

@@ -1,8 +1,7 @@
 import 'package:SIH/custom_widgets/menu_item.dart';
-import 'package:SIH/screens/project_completion_estimator.dart';
-import 'package:SIH/screens/project_details_page.dart';
-import 'package:SIH/screens/sitewise_inventory_page.dart';
 import 'package:flutter/material.dart';
+import 'package:SIH/screens/attendance.dart';
+import 'package:SIH/screens/sitewise_inventory_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = "HomePage";
@@ -46,22 +45,14 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, ProjectCompletionEstimator.routeName);
-                          },
+                          onTap: null,
                           icon: Icons.face,
                           text: 'Project Completion Estimator',
                         ),
                       ),
                       Expanded(
                         child: MenuItem(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              ProjectDetailsPage.routeName,
-                            );
-                          },
+                          onTap: null,
                           icon: Icons.face,
                           text: 'Project Details',
                         ),
@@ -101,7 +92,9 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
+                          onTap: () {
+                            Navigator.pushNamed(context, Attendance.routeName);
+                          },
                           icon: Icons.face,
                           text: 'Contruction Workers',
                         ),
