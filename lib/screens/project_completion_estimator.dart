@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:SIH/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -55,15 +56,92 @@ class _ProjectCompletionEstimatorState
         ),
         body: Center(
           child: Container(
-            child: Row(
+            child: Column(
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {},
-                  child: Icon(Icons.camera),
+                Expanded(
+                  flex: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFDEDEDE),
+                        borderRadius: BorderRadius.circular(6.0),
+                      ),
+                      child: _image != null
+                          ? Image.file(_image)
+                          : Center(
+                              child: Text(
+                                'Add Image...',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline4
+                                    .copyWith(color: Colors.black),
+                              ),
+                            ),
+                    ),
+                  ),
                 ),
-                RaisedButton(
-                  onPressed: () {},
-                  child: Icon(Icons.image),
+                Expanded(
+                  flex: 2,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        RaisedButton(
+                          onPressed: getImageFromCamera,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.camera,
+                                  size: 32.0,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text('Camera'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        RaisedButton(
+                          onPressed: getImageFromGallery,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.image,
+                                  size: 32.0,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text('Gallery'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RaisedButton(
+                      onPressed: () {
+                        print('asd');
+                      },
+                      child: Text(
+                        'CALCULATE',
+                        style: Theme.of(context)
+                            .textTheme
+                            .button
+                            .copyWith(color: Colors.white),
+                      ),
+                      color: kButtonColor.withOpacity(0.7),
+                    ),
+                  ),
                 ),
               ],
             ),
