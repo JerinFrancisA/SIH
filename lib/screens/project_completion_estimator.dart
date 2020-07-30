@@ -71,7 +71,7 @@ class _ProjectCompletionEstimatorState
                           ? Image.file(_image)
                           : Center(
                               child: Text(
-                                'Add Image...',
+                                'Capture Image...',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline4
