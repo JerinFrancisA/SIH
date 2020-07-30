@@ -1,3 +1,4 @@
+import 'package:SIH/screens/attendance.dart';
 import 'package:SIH/screens/home_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
@@ -111,6 +112,7 @@ class MyApp extends StatelessWidget {
             ProjectCompletionEstimator(),
         ProjectDetailsPage.routeName: (context) => ProjectDetailsPage(),
         SitewiseInventoryPage.routeName: (context) => SitewiseInventoryPage(),
+        Attendance.routeName: (context) => Attendance(),
       },
     );
   }
