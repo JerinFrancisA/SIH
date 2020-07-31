@@ -27,10 +27,10 @@ class MenuItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 18.0),
                 child: Icon(
                   icon,
-                  size: 32.0,
+                  size: 38.0,
                 ),
               ),
               Padding(

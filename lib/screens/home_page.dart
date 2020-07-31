@@ -1,4 +1,8 @@
 import 'package:SIH/custom_widgets/menu_item.dart';
+import 'package:SIH/screens/daily_checklist_page.dart';
+import 'package:SIH/screens/project_completion_estimator.dart';
+import 'package:SIH/screens/project_details_page.dart';
+import 'package:SIH/screens/weekly_feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:SIH/screens/attendance.dart';
 import 'package:SIH/screens/sitewise_inventory_page.dart';
@@ -45,15 +49,25 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
-                          icon: Icons.face,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ProjectCompletionEstimator.routeName,
+                            );
+                          },
+                          icon: Icons.assessment,
                           text: 'Project Completion Estimator',
                         ),
                       ),
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
-                          icon: Icons.face,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ProjectDetailsPage.routeName,
+                            );
+                          },
+                          icon: Icons.info_outline,
                           text: 'Project Details',
                         ),
                       ),
@@ -66,8 +80,13 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
-                          icon: Icons.face,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              DailyChecklistPage.routeName,
+                            );
+                          },
+                          icon: Icons.check_circle_outline,
                           text: 'Daily Checklist',
                         ),
                       ),
@@ -79,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                               SitewiseInventoryPage.routeName,
                             );
                           },
-                          icon: Icons.face,
+                          icon: Icons.account_balance,
                           text: 'Sitewise Inventory',
                         ),
                       ),
@@ -95,15 +114,20 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.pushNamed(context, Attendance.routeName);
                           },
-                          icon: Icons.face,
+                          icon: Icons.supervised_user_circle,
                           text: 'Contruction Workers',
                         ),
                       ),
                       Expanded(
                         child: MenuItem(
-                          onTap: null,
-                          icon: Icons.face,
-                          text: 'Feedback',
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              WeeklyFeedbackPage.routeName,
+                            );
+                          },
+                          icon: Icons.feedback,
+                          text: 'Weekly Feedback',
                         ),
                       ),
                     ],

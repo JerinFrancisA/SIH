@@ -1,8 +1,11 @@
 import 'package:SIH/screens/attendance.dart';
+import 'package:SIH/screens/daily_checklist_page.dart';
 import 'package:SIH/screens/home_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
 import 'package:SIH/screens/sitewise_inventory_page.dart';
+import 'package:SIH/screens/weekly_feedback.dart';
+import 'package:SIH/utilities/weekly_feedback_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:SIH/utilities/constants.dart';
@@ -111,8 +114,10 @@ class MyApp extends StatelessWidget {
         ProjectCompletionEstimator.routeName: (context) =>
             ProjectCompletionEstimator(),
         ProjectDetailsPage.routeName: (context) => ProjectDetailsPage(),
+        DailyChecklistPage.routeName: (context) => DailyChecklistPage(),
         SitewiseInventoryPage.routeName: (context) => SitewiseInventoryPage(),
         Attendance.routeName: (context) => Attendance(),
+        WeeklyFeedbackPage.routeName: (context) => WeeklyFeedbackPage(),
       },
     );
   }
