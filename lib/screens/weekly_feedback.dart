@@ -184,7 +184,24 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
               typeOfWork,
               wagePerDay,
               Button(
-                onPressed: () {
+                onPressed: () async {
+                  Map itemsOfWorkTemp = {};
+                  Map materialsTemp = {};
+                  for (int i = 0; i < workItems.length; i++) {
+                    itemsOfWorkTemp[workItems[i].first.input] = {
+                      'Percent Complete Total':
+                          int.parse(workItems[i].second.input)
+                    };
+                  }
+
+                  for (int i = 0; i < materials.length; i++) {
+                    materialsTemp[materials[i].first.input] = {
+                      'Nos': int.parse(materials[i].second.input),
+                      'Price': int.parse(materials[i].third.input),
+                      'Quality': materials[i].fourth.input,
+                    };
+                  }
+
                   WeeklyFeedbackData dataToSend = WeeklyFeedbackData(
                     actualDaysCharged: int.parse(actualDaysCharged.input),
                     areaNumber: int.parse(areaNumber.input),
@@ -192,8 +209,8 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
                         int.parse(contractLabourersThisWeek.input),
                     contractor: contractor.input,
                     date: DateTime.now(),
-                    itemsOfWork: {},
-                    materials: {},
+                    itemsOfWork: itemsOfWorkTemp,
+                    materials: materialsTemp,
                     minimumDaysAWeek: int.parse(minimumDaysAWeek.input),
                     numberOfPlots: int.parse(numberOfPlots.input),
                     percentOfContractComplete:
@@ -201,6 +218,8 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
                     typeOfWork: typeOfWork.input,
                     wagePerDay: int.parse(wagePerDay.input),
                   );
+                  print(dataToSend.itemsOfWork);
+                  print(dataToSend.materials);
                   print(actualDaysCharged.input +
                       "," +
                       areaNumber.input +
@@ -218,6 +237,8 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
                       typeOfWork.input +
                       "," +
                       wagePerDay.input);
+                  await dataToSend.sendToDatabase();
+                  Navigator.pop(context);
                 },
                 text: 'SUBMIT',
               ),
