@@ -11,7 +11,7 @@ class WeeklyFeedbackData {
   final int minimumDaysAWeek;
   final int numberOfPlots;
   final int percentOfContractComplete;
-  final int typeOfWork;
+  final String typeOfWork;
   final int wagePerDay;
 
   WeeklyFeedbackData({

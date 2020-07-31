@@ -1,5 +1,8 @@
 import 'package:SIH/custom_widgets/button.dart';
 import 'package:SIH/custom_widgets/input_box..dart';
+import 'package:SIH/custom_widgets/item_of_work.dart';
+import 'package:SIH/custom_widgets/materials.dart';
+import 'package:SIH/utilities/weekly_feedback_data.dart';
 import 'package:flutter/material.dart';
 
 class WeeklyFeedbackPage extends StatefulWidget {
@@ -56,8 +59,8 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
     keyboardType: TextInputType.number,
   );
 
-  int _noOfItemsOfWork = 1;
-  int _noOfMaterials = 1;
+  List<ItemOfWork> workItems = [ItemOfWork()];
+  List<Materials> materials = [Materials()];
 
   @override
   Widget build(BuildContext context) {
@@ -109,8 +112,72 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
                       .copyWith(color: Colors.black),
                 ),
               ),
-              getItemsWidget(),
-              getMaterialsWidget(),
+              Column(
+                children: workItems,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      workItems.add(ItemOfWork());
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 8.0,
+                      right: 14.0,
+                      left: 8.0,
+                      bottom: 8.0,
+                    ),
+                    child: Text(
+                      'Add More',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          .copyWith(color: Colors.blue),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text(
+                  'Materials',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: Colors.black),
+                ),
+              ),
+              Column(
+                children: materials,
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      materials.add(Materials());
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 8.0,
+                      right: 14.0,
+                      left: 8.0,
+                      bottom: 8.0,
+                    ),
+                    child: Text(
+                      'Add More',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          .copyWith(color: Colors.blue),
+                    ),
+                  ),
+                ),
+              ),
               minimumDaysAWeek,
               numberOfPlots,
               percentOfContractComplete,
@@ -118,7 +185,39 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
               wagePerDay,
               Button(
                 onPressed: () {
-                  print('hmmmm');
+                  WeeklyFeedbackData dataToSend = WeeklyFeedbackData(
+                    actualDaysCharged: int.parse(actualDaysCharged.input),
+                    areaNumber: int.parse(areaNumber.input),
+                    contractLabourersThisWeek:
+                        int.parse(contractLabourersThisWeek.input),
+                    contractor: contractor.input,
+                    date: DateTime.now(),
+                    itemsOfWork: {},
+                    materials: {},
+                    minimumDaysAWeek: int.parse(minimumDaysAWeek.input),
+                    numberOfPlots: int.parse(numberOfPlots.input),
+                    percentOfContractComplete:
+                        int.parse(percentOfContractComplete.input),
+                    typeOfWork: typeOfWork.input,
+                    wagePerDay: int.parse(wagePerDay.input),
+                  );
+                  print(actualDaysCharged.input +
+                      "," +
+                      areaNumber.input +
+                      "," +
+                      contractLabourersThisWeek.input +
+                      "," +
+                      contractor.input +
+                      "," +
+                      minimumDaysAWeek.input +
+                      "," +
+                      numberOfPlots.input +
+                      "," +
+                      percentOfContractComplete.input +
+                      "," +
+                      typeOfWork.input +
+                      "," +
+                      wagePerDay.input);
                 },
                 text: 'SUBMIT',
               ),
@@ -128,8 +227,4 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
       ),
     );
   }
-
-  getItemsWidget() {}
-
-  getMaterialsWidget() {}
 }

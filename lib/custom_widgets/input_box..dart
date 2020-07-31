@@ -44,15 +44,21 @@ class _InputBoxState extends State<InputBox> {
           fillColor: Color(0xFFEBEBEB),
           hintText: widget.hintText,
           labelText: widget.labelText,
-          hintStyle:
-              Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.grey),
-          labelStyle:
-              Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
+          hintStyle: Theme.of(context)
+              .textTheme
+              .bodyText2
+              .copyWith(color: Colors.grey),
+          labelStyle: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: Colors.black),
         ),
         keyboardType: widget.keyboardType,
         maxLength: widget.maxLength,
         maxLines: widget.maxLines,
         obscureText: widget.obscureText ?? false,
+        style:
+            Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
       ),
     );
   }
