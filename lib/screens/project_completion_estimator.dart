@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:SIH/custom_widgets/button.dart';
 import 'package:SIH/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -126,21 +127,11 @@ class _ProjectCompletionEstimatorState
                 ),
                 Expanded(
                   flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: () {
-                        print('asd');
-                      },
-                      child: Text(
-                        'CALCULATE',
-                        style: Theme.of(context)
-                            .textTheme
-                            .button
-                            .copyWith(color: Colors.white),
-                      ),
-                      color: kButtonColor.withOpacity(0.7),
-                    ),
+                  child: Button(
+                    onPressed: () {
+                      print('hmm');
+                    },
+                    text: 'CALCULATE',
                   ),
                 ),
               ],

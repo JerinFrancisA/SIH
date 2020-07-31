@@ -25,32 +25,35 @@ class InputBox extends StatefulWidget {
 class _InputBoxState extends State<InputBox> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      onChanged: (val) {
-        widget.input = val;
-      },
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4.0),
-          borderSide: BorderSide(
-            color: Colors.grey,
-            style: BorderStyle.solid,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        onChanged: (val) {
+          widget.input = val;
+        },
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(4.0),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              style: BorderStyle.solid,
+            ),
           ),
+          alignLabelWithHint: true,
+          filled: true,
+          fillColor: Color(0xFFEBEBEB),
+          hintText: widget.hintText,
+          labelText: widget.labelText,
+          hintStyle:
+              Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.grey),
+          labelStyle:
+              Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
         ),
-        alignLabelWithHint: true,
-        filled: true,
-        fillColor: Color(0xFFFAFAFA),
-        hintText: widget.hintText,
-        labelText: widget.labelText,
-        hintStyle:
-            Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.grey),
-        labelStyle:
-            Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.black),
+        keyboardType: widget.keyboardType,
+        maxLength: widget.maxLength,
+        maxLines: widget.maxLines,
+        obscureText: widget.obscureText ?? false,
       ),
-      keyboardType: widget.keyboardType,
-      maxLength: widget.maxLength,
-      maxLines: widget.maxLines,
-      obscureText: widget.obscureText ?? false,
     );
   }
 }

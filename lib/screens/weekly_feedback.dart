@@ -1,3 +1,4 @@
+import 'package:SIH/custom_widgets/button.dart';
 import 'package:SIH/custom_widgets/input_box..dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,9 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
     keyboardType: TextInputType.number,
   );
 
+  int _noOfItemsOfWork = 1;
+  int _noOfMaterials = 1;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,19 +85,51 @@ class _WeeklyFeedbackPageState extends State<WeeklyFeedbackPage> {
         body: Center(
           child: ListView(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text(
+                  'Enter the details below',
+                  style: Theme.of(context).textTheme.headline5.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
               actualDaysCharged,
               areaNumber,
               contractLabourersThisWeek,
               contractor,
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Text(
+                  'Items of Work',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: Colors.black),
+                ),
+              ),
+              getItemsWidget(),
+              getMaterialsWidget(),
               minimumDaysAWeek,
               numberOfPlots,
               percentOfContractComplete,
               typeOfWork,
-              wagePerDay
+              wagePerDay,
+              Button(
+                onPressed: () {
+                  print('hmmmm');
+                },
+                text: 'SUBMIT',
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  getItemsWidget() {}
+
+  getMaterialsWidget() {}
 }

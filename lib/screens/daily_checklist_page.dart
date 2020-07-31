@@ -35,12 +35,15 @@ class _DailyChecklistPageState extends State<DailyChecklistPage> {
           child: Container(
             child: Column(
               children: <Widget>[
-                Text(
-                  'Today\'s Date : ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      .copyWith(color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Today\'s Date : ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        .copyWith(color: Colors.black),
+                  ),
                 ),
               ],
             ),
