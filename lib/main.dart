@@ -1,5 +1,10 @@
 import 'package:SIH/screens/attendance.dart';
+<<<<<<< HEAD
 import 'package:SIH/screens/daily_checklist_page.dart';
+||||||| merged common ancestors
+=======
+import 'package:SIH/screens/biometric.dart';
+>>>>>>> bccf4bdeb8fd8e2f13b33b723cd93aaad36c334f
 import 'package:SIH/screens/home_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';

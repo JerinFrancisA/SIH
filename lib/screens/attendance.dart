@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:SIH/utilities/constants.dart';
+import 'package:SIH/screens/biometric.dart';
 
 class Attendance extends StatefulWidget {
   static const routeName = 'attendance';
@@ -61,14 +62,19 @@ class _AttendanceState extends State<Attendance> {
   }
 }
 
-class AttendanceBox extends StatelessWidget {
-  const AttendanceBox({
+class AttendanceBox extends StatefulWidget {
+  AttendanceBox({
     Key key,
     @required this.document,
   }) : super(key: key);
 
   final DocumentSnapshot document;
 
+  @override
+  _AttendanceBoxState createState() => _AttendanceBoxState();
+}
+
+class _AttendanceBoxState extends State<AttendanceBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,8 +87,8 @@ class AttendanceBox extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              document.documentID != null
-                  ? document.documentID.toString()
+              widget.document.documentID != null
+                  ? widget.document.documentID.toString()
                   : '<No message retrieved>',
               style: Theme.of(context).textTheme.headline4,
             ),
@@ -92,7 +98,7 @@ class AttendanceBox extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             FutureBuilder(
-              future: getChildren(document: document),
+              future: getChildren(document: widget.document),
               initialData: <Widget>[
                 Center(
                   child: Text('Awaiting Data..'),
@@ -118,10 +124,11 @@ class AttendanceBox extends StatelessWidget {
   }
 
   Future<List<Widget>> getChildren({var document}) async {
+    Icon attended = Icon(Icons.add_circle);
     return List.generate(
       document.data.length,
       (index) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 18.0),
@@ -129,13 +136,30 @@ class AttendanceBox extends StatelessWidget {
               document.data.keys.toList()[index].toString(),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.only(right: 18.0),
-          //   child: Text(
-          //     document.data.values.toList()[index].toString(),
-          //   ),
-          // ),
-
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: GestureDetector(
+                child: IconButton(
+              icon: attended,
+              onPressed: () {
+                print('hello');
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => Biometric(
+                          document: widget.document,
+                          field: document.data.keys.toList()[index].toString(),
+                        )));
+                // Navigator.pushNamed(context, Biometric.routeName);
+                // setState(() {
+                //   attended = Icon(Icons.check);
+                // });
+                // Firestore.instance
+                //     .collection('workers')
+                //     .document(widget.document.documentID)
+                //     .updateData({'fawaz': 'present'});
+              },
+            )),
+          ),
           SizedBox(
             height: 40.0,
           ),
