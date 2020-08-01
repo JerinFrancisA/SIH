@@ -80,7 +80,7 @@ class ProjectBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: kButtonColor,
+        color: kMenuColor4,
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Padding(

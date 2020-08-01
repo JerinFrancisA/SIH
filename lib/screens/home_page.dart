@@ -3,6 +3,7 @@ import 'package:SIH/screens/daily_checklist_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
 import 'package:SIH/screens/weekly_feedback.dart';
+import 'package:SIH/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:SIH/screens/attendance.dart';
 import 'package:SIH/screens/sitewise_inventory_page.dart';
@@ -49,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor1,
                           onTap: () {
                             Navigator.pushNamed(
                               context,
@@ -61,6 +63,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor2,
                           onTap: () {
                             Navigator.pushNamed(
                               context,
@@ -80,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor3,
                           onTap: () {
                             Navigator.pushNamed(
                               context,
@@ -92,6 +96,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor4,
                           onTap: () {
                             Navigator.pushNamed(
                               context,
@@ -111,6 +116,7 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor5,
                           onTap: () {
                             Navigator.pushNamed(context, Attendance.routeName);
                           },
@@ -120,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: MenuItem(
+                          color: kMenuColor6,
                           onTap: () {
                             Navigator.pushNamed(
                               context,

@@ -57,5 +57,13 @@ const kFoodItemBoxBorderColor = Color(0xFFDDDDDD);
 // Cursor while entering text
 const kCursorColor = Colors.black;
 
+// Menu Colors
+const kMenuColor1 = Color(0xFFEA403E);
+const kMenuColor2 = Color(0xFFF9A82F);
+const kMenuColor3 = Color(0xDF204098);
+const kMenuColor4 = Color(0xFF319A9D);
+const kMenuColor5 = Color(0xCCA2218E);
+const kMenuColor6 = Color(0xFF70BE44);
+
 // Server address
 const SERVER_IP = 'https://ritcb-master.herokuapp.com';

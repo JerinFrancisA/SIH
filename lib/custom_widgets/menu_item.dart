@@ -5,10 +5,12 @@ class MenuItem extends StatelessWidget {
   final IconData icon;
   final String text;
   final Function onTap;
+  final Color color;
   const MenuItem({
     @required this.icon,
     @required this.text,
     @required this.onTap,
+    @required this.color,
     Key key,
   }) : super(key: key);
 
@@ -20,7 +22,7 @@ class MenuItem extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-            color: kButtonColor,
+            color: color,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Column(
