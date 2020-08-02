@@ -1,5 +1,6 @@
 import 'package:SIH/screens/attendance.dart';
 import 'package:SIH/screens/daily_checklist_page.dart';
+import 'package:SIH/screens/firstscreen.dart';
 import 'package:SIH/screens/home_page.dart';
 import 'package:SIH/screens/project_completion_estimator.dart';
 import 'package:SIH/screens/project_details_page.dart';
@@ -8,6 +9,7 @@ import 'package:SIH/screens/weekly_feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:SIH/utilities/constants.dart';
+import 'package:SIH/screens/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -108,7 +110,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => FirstScreen(),
         HomePage.routeName: (context) => HomePage(),
         ProjectCompletionEstimator.routeName: (context) =>
             ProjectCompletionEstimator(),
@@ -117,6 +119,7 @@ class MyApp extends StatelessWidget {
         SitewiseInventoryPage.routeName: (context) => SitewiseInventoryPage(),
         Attendance.routeName: (context) => Attendance(),
         WeeklyFeedbackPage.routeName: (context) => WeeklyFeedbackPage(),
+        Login.routeName: (context) => Login(),
       },
     );
   }
